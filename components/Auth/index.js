@@ -44,7 +44,7 @@ function AuthForm() {
       let result;
       try {
         result = await signIn("credentials", {
-          redirect: false,
+          redirect: "/",
           email: enteredEmail,
           password: enteredPassword,
         });
