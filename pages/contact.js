@@ -19,15 +19,15 @@ export async function getServerSideProps(context) {
 
   if (!session) {
     return {
-      props: {
-        data: "Ali",
+      redirect: {
+        destination: "/",
+        permanent: false,
       },
     };
   } else {
     return {
-      redirect: {
-        destination: "/",
-        permanent: false,
+      props: {
+        data: "Ali",
       },
     };
   }
