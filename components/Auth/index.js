@@ -41,15 +41,17 @@ function AuthForm() {
     // optional: Add validation
 
     if (isLogin) {
-      const result = await signIn("credentials", {
-        redirect: false,
-        email: enteredEmail,
-        password: enteredPassword,
-      });
-
-      if (!result.error) {
-        // set some auth state
-        router.replace("/");
+      try {
+        const result = await signIn("credentials", {
+          redirect: false,
+          email: enteredEmail,
+          password: enteredPassword,
+        });
+      } catch {
+        if (!result.error) {
+          // set some auth state
+          router.replace("/");
+        }
       }
     } else {
       try {
