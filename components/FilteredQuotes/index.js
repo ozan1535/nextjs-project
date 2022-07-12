@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function FilteredQuotes({ quoteList }) {
   return (
     <>
-      {quoteList.map((quote) => (
+      {quoteList?.map((quote) => (
         <div className={classes.smContainer} key={quote._id}>
           <div className={classes.filterCard}>
             <div className={classes.filterCardText}>
@@ -15,7 +15,7 @@ export default function FilteredQuotes({ quoteList }) {
                 </small>
               </div>
               <div className={classes.filterCardTextQuote}>
-                {quote.quote}...
+                {quote.quote.substring(0, 250)}...
               </div>
             </div>
             <Link href={`/${quote._id}`}>
