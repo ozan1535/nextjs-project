@@ -26,7 +26,9 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const res = await fetch(`http://localhost:3000/api/message`);
+  const res = await fetch(
+    `https://nextjs-project-ozanbilgic-nextedycom.vercel.app/api/message`
+  );
   const data = await res.json();
   return { props: { messages: data } };
 }

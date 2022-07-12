@@ -2,7 +2,7 @@ import AddForm from "../components/AddForm";
 import { getSession } from "next-auth/react";
 import Head from "next/head";
 
-export default function () {
+export default function Add() {
   return (
     <div>
       <Head>

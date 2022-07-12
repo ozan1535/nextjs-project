@@ -7,6 +7,12 @@ export default function DateQuote({ quotes }) {
   const quotesList = quotes.authorquotes;
   const router = useRouter();
 
+  const dateQuote = useMemo(() => {
+    return quotesList.filter(
+      (quote) => year === quote.year && month === quote.month
+    );
+  }, [quotes]);
+
   const filterData = router.query.slug;
 
   if (!filterData) {
@@ -15,12 +21,6 @@ export default function DateQuote({ quotes }) {
 
   const year = filterData[0];
   const month = filterData[1];
-
-  const dateQuote = useMemo(() => {
-    return quotesList.filter(
-      (quote) => year === quote.year && month === quote.month
-    );
-  }, [quotes]);
 
   if (dateQuote.length === 0) {
     return <h1>No valid quote</h1>;
@@ -34,7 +34,9 @@ export default function DateQuote({ quotes }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/get`);
+  const res = await fetch(
+    `https://nextjs-project-ozanbilgic-nextedycom.vercel.app/api/get`
+  );
   const data = await res.json();
   return { props: { quotes: data } };
 }
