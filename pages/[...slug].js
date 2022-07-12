@@ -22,9 +22,9 @@ export default function DateQuote({ quotes }) {
   const year = filterData[0];
   const month = filterData[1];
 
-  if (dateQuote.length === 0) {
+/*   if (dateQuote.length === 0) {
     return <h1>No valid quote</h1>;
-  }
+  } */
 
   return (
     <div className={classes.container}>
