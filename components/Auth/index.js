@@ -42,7 +42,7 @@ function AuthForm() {
 
     if (isLogin) {
       const result = await signIn("credentials", {
-        redirect: "/",
+        redirect: false,
         email: enteredEmail,
         password: enteredPassword,
       });
