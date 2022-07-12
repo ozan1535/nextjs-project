@@ -17,7 +17,7 @@ export default function Messages({ messages }) {
 export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req });
 
-  if (!session) {
+  if (!session.user.email) {
     return {
       redirect: {
         destination: "/",
