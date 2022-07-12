@@ -23,12 +23,12 @@ export async function getServerSideProps(context) {
         data: "Ali",
       },
     };
+  } else {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
   }
-
-  return {
-    redirect: {
-      destination: "/",
-      permanent: false,
-    },
-  };
 }
