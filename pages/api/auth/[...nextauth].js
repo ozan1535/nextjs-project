@@ -16,7 +16,7 @@ export default NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const client = await connectDatabase("users");
+        const client = await connectDatabase();
 
         const usersCollection = client.db().collection("users");
 

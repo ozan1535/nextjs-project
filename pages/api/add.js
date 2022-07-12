@@ -3,7 +3,7 @@ import { connectDatabase } from "../../helpers/database";
 export default async function add(req, res) {
   if (req.method === "POST") {
     const { author, quote, year, month } = req.body;
-    const store = await connectDatabase("authorquote");
+    const store = await connectDatabase();
 
     const db = store.db();
     const add = await db

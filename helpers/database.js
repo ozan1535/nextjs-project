@@ -1,8 +1,8 @@
 import { MongoClient } from "mongodb";
 
-export async function connectDatabase(db) {
+export async function connectDatabase() {
   const connection = await MongoClient.connect(
-    `mongodb+srv://ozanbilgic:admin123@${db}.rgygimi.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://ozanbilgic:admin123@$authorquotes.rgygimi.mongodb.net/?retryWrites=true&w=majority`
   );
 
   return connection;

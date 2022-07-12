@@ -7,7 +7,7 @@ export default async function add(req, res) {
   } else if (req.method === "POST") {
     console.log("hello");
     const { title, message } = req.body;
-    const store = await connectDatabase("messages");
+    const store = await connectDatabase();
 
     const db = store.db();
     const add = await db.collection("messages").insertOne({ title, message });
