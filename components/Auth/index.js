@@ -41,8 +41,9 @@ function AuthForm() {
     // optional: Add validation
 
     if (isLogin) {
+      let result;
       try {
-        const result = await signIn("credentials", {
+        result = await signIn("credentials", {
           redirect: false,
           email: enteredEmail,
           password: enteredPassword,
