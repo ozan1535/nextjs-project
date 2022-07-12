@@ -11,7 +11,7 @@ export default function DateQuote({ quotes }) {
     return quotesList.filter(
       (quote) => year === quote.year && month === quote.month
     );
-  }, [quotes]);
+  }, [month, quotesList, year]);
 
   const filterData = router.query.slug;
 
