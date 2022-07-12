@@ -46,7 +46,9 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const res = await fetch(`https://nextjs-project-ozanbilgic-nextedycom.vercel.app/api/get`);
+  const res = await fetch(
+    `https://nextjs-project-dnja6jscr-ozanbilgic-nextedycom.vercel.app/api/get`
+  );
   const data = await res.json();
   return { props: { quotes: data } };
 }

@@ -35,7 +35,7 @@ export default function DateQuote({ quotes }) {
 
 export async function getServerSideProps() {
   const res = await fetch(
-    `https://nextjs-project-ozanbilgic-nextedycom.vercel.app/api/get`
+    `https://nextjs-project-dnja6jscr-ozanbilgic-nextedycom.vercel.app/api/get`
   );
   const data = await res.json();
   return { props: { quotes: data } };
