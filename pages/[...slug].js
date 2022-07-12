@@ -15,7 +15,7 @@ export default function DateQuote({ quotes }) {
 
   const filterData = router.query.slug;
 
-  if (!filterData) {
+  if (filterData) {
     return <h1>Loading...</h1>;
   }
 
