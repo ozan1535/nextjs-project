@@ -37,7 +37,7 @@ export default function SinglePost({ quotes }) {
 export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req });
 
-  if (session) {
+  if (!session) {
     return {
       redirect: {
         destination: "/auth",
