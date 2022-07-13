@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import classes from "./../styles/singlePost.module.css";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 
 export default function SinglePost({ quotes }) {
   const router = useRouter();
@@ -9,9 +9,20 @@ export default function SinglePost({ quotes }) {
   const quote = quotes.authorquotes;
   const [singleQuote, setSingleQuote] = useState();
 
+  const session = useSession();
+  useEffect(() => {
+    if (!session.data) {
+      router.push("/");
+    }
+  }, [router, session]);
+
   useEffect(() => {
     setSingleQuote(quote.filter((item) => item._id === quoteId)[0]);
   }, [quotes]);
+
+  if (!session.data) {
+    return <h1>Loading</h1>;
+  }
 
   if (!singleQuote) {
     return <h1>Loading</h1>;
@@ -34,18 +45,7 @@ export default function SinglePost({ quotes }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const session = await getSession({ req: context.req });
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/auth",
-        permanent: false,
-      },
-    };
-  }
-
+export async function getServerSideProps() {
   const res = await fetch(
     `https://nextjs-project-dnja6jscr-ozanbilgic-nextedycom.vercel.app/api/get`
   );
