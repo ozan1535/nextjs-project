@@ -1,19 +1,20 @@
 import GetMessages from "../components/messages";
 import classes from "./../styles/messages.module.css";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-export default function Messages({ messages, session }) {
+export default function Messages({ messages }) {
   const router = useRouter();
+  const session = useSession();
   useEffect(() => {
-    if (!session) {
+    if (!session.data) {
       router.push("/");
     }
   }, [router, session]);
 
-  if (!session) {
+  if (!session.data) {
     return <h1>Loading</h1>;
   }
 
